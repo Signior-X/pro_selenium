@@ -1,0 +1,8 @@
+.env
+
+.google-cookie
+chromedriver.exe
+
+logs/debug.log
+debug.log.*
+debug.log
