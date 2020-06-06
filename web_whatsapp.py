@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 # %%
@@ -25,9 +26,9 @@ input("Press Enter after scanning: ")
 # %% The main cell
 while(True):
 
-    # target = input("Enter the target (_cancel for stop) : ")
-    target = "Rashmi"
-    input("Press Enter")
+    target = input("Enter the target (_cancel for stop) : ")
+    # target = "Rashmi"
+    # input("Press Enter")
     if(target == '_cancel'):
         break
     print("Target set")
@@ -47,14 +48,48 @@ while(True):
 
     for i in range(count):
         message_input.send_keys(Keys.CONTROL + "v")
-        message_input.send_keys(' '+str(i))
+        # message_input.send_keys(' '+str(i))
         message_input.send_keys(Keys.ENTER)
     
 
     print("Messages sent!")
-    
+
 print("Done")
 # Nirlaj to vo hai jo kaayaro ki bhati yudh chhor ke bhag jaate hai
 
 # %% Quit
 driver.quit()
+
+#%% Updated one (Copy text which to be send)
+while(True):
+
+    target = input("Enter the target (Empty for stop) : ")
+    # target = "Rashmi"
+    # input("Press Enter")
+    if(target == ''):
+        break
+    print("Target set", target)
+
+    # For the searching ans automatically selecting the first one
+    search_box = driver.find_element_by_xpath('//*[@id="side"]/div[1]/div/label/div/div[2]')
+    search_box.send_keys(target + Keys.ENTER)
+    print(search_box)
+
+    message_input = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+
+      # msg = input("Enter the message to be sent: ")
+      # msg = "test"
+
+
+    count = int(input("Enter the count: "))
+
+    for i in range(count):
+        message_input.send_keys(Keys.CONTROL + "v")
+        # message_input.send_keys(' '+str(i))
+        message_input.send_keys(Keys.ENTER)
+    
+
+    print("Messages sent!")
+
+print("Done")
+# Happy Birthday Naresh

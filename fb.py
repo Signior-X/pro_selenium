@@ -87,7 +87,9 @@ count = int(input("Enter the count: "))
 # This created an infinte???
 actions = ActionChains(driver)
 for i in range(count):
-    actions.send_keys(comment_write_up + Keys.ENTER)
+    actions.send_keys(Keys.CONTROL + "v")
+    actions.send_keys(Keys.ENTER)
+    # actions.send_keys(comment_write_up + Keys.ENTER)
 
 actions.perform()
 

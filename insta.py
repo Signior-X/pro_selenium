@@ -69,7 +69,7 @@ print("TO do later")
 message_area_xpath = '//*[@id="react-root"]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea'
 message_area = driver.find_element_by_xpath(message_area_xpath)
 print(message_area)
-msg = "Get yourself someone, who fucks you like 2020!"
+msg = "Testing"
 count = int(input('Enter the count: '))
 message_area.send_keys(msg)
 message_area.send_keys(Keys.CONTROL + "a")
