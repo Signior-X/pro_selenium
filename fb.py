@@ -20,8 +20,13 @@ names = pd.read_csv('unigram_freq.csv')['word']
 
 #%% Open chrome using driver
 # Replace below path with the absolute path 
-# to chromedriver in your computer 
-driver = webdriver.Chrome() 
+# to chromedriver in your computer
+
+pathOfDriver = os.getcwd() + '/chromedriver'
+print(pathOfDriver)
+
+driver = webdriver.Chrome(pathOfDriver)
+
 driver.get("https://facebook.com/") 
 wait = WebDriverWait(driver, 600) 
 
@@ -77,10 +82,12 @@ except:
 
 
 # %% Comment
+## Before usign this have something pasted
+
 comment_on_post_form = driver.find_element_by_xpath('//*[@id="fbPhotoSnowliftFeedbackInput"]/div/div/div[2]/div/div/div/div/div/form/div')
 comment_on_post_form.click()
 
-comment_write_up = 'That was an Awesome Day!'
+comment_write_up = "nothing"
 
 count = int(input("Enter the count: "))
 
