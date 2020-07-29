@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+# import pyttsx3
 
 # %%
 # Replace below path with the absolute path
@@ -64,6 +65,7 @@ print("Done")
 # Nirlaj to vo hai jo kaayaro ki bhati yudh chhor ke bhag jaate hai
 
 #%% Updated one (Copy text which to be send)
+
 while(True):
 
     target = input("Enter the target (Empty for stop) : ")
@@ -83,13 +85,14 @@ while(True):
     msg = input("Enter the message to be sent: ")
     # msg = "test"
 
-
     count = int(input("Enter the count: "))
 
     for i in range(count):
         message_input.send_keys(msg)
         # message_input.send_keys(' '+str(i))
         message_input.send_keys(Keys.ENTER)
+
+
     
 
     print("Messages sent!")

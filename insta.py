@@ -35,7 +35,7 @@ login_form = driver.find_element_by_tag_name('form')
 unField = login_form.find_element_by_name('username')
 # print(unField)
 unField.send_keys(Keys.CONTROL + "a")
-unField.send_keys('sethpriyam1@gmail.com')
+unField.send_keys('Pain_seal_arts')
 
 pwField = login_form.find_element_by_name('password')
 # print(pwField)
@@ -72,7 +72,9 @@ print("TO do later")
 message_area_xpath = '//*[@id="react-root"]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea'
 message_area = driver.find_element_by_xpath(message_area_xpath)
 print(message_area)
+
 msg = "Be ready to face the danger!"
+
 count = int(input('Enter the count: '))
 message_area.send_keys(msg)
 message_area.send_keys(Keys.CONTROL + "a")
@@ -89,7 +91,7 @@ comment_area = driver.find_element_by_class_name('X7cDz').find_element_by_tag_na
 
 count = int(input("Enter the count: "))
 for i in range(count):
-    comment_area.send_keys("Awesome Pics bro!" + Keys.ENTER)
+    comment_area.send_keys("Happy Birthday Shirley!" + Keys.ENTER)
     time.sleep(3)
 
 #%% Quit

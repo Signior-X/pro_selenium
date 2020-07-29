@@ -7,3 +7,5 @@ chromedriver
 logs/debug.log
 debug.log.*
 debug.log
+
+.vscode
