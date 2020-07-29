@@ -20,7 +20,10 @@ names = pd.read_csv('unigram_freq.csv')['word']
 #%% Open chrome using driver
 # Replace below path with the absolute path 
 # to chromedriver in your computer 
-driver = webdriver.Chrome() 
+pathOfDriver = os.getcwd() + '/chromedriver'
+print(pathOfDriver)
+
+driver = webdriver.Chrome(pathOfDriver)
 
 driver.get("https://instagram.com/") 
 wait = WebDriverWait(driver, 600) 
@@ -69,7 +72,9 @@ print("TO do later")
 message_area_xpath = '//*[@id="react-root"]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea'
 message_area = driver.find_element_by_xpath(message_area_xpath)
 print(message_area)
-msg = "Think hai.."
+
+msg = "Be ready to face the danger!"
+
 count = int(input('Enter the count: '))
 message_area.send_keys(msg)
 message_area.send_keys(Keys.CONTROL + "a")

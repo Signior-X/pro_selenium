@@ -2,6 +2,7 @@
 
 .google-cookie
 chromedriver.exe
+chromedriver
 
 logs/debug.log
 debug.log.*
