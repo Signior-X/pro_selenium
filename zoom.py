@@ -12,7 +12,7 @@ import time
 # to chromedriver in your computer
 driver = webdriver.Chrome()
 
-driver.get("https://us04web.zoom.us/j/74265780536?pwd=L3MzbUpqb0RPZFRZaGRhRmRZdnZBUT09")
+driver.get("https://us04web.zoom.us/j/73600336368?pwd=RVdNcm50VGtDL0ZGWjYwT0VzN3NKUT09")
 wait = WebDriverWait(driver, 600)
 
 # Replace 'Friend's Name' with the name of your friend
@@ -25,12 +25,19 @@ input("Press Enter after scanning: ")
 
 #%% after zoom setup and opening chat
 
-text_area = driver.find_element_by_xpath('//*[@id="wc-container-right"]/div/div[2]/div[2]/div/div[2]/textarea')
-text_area.send_keys("hello")
+text_area = driver.find_element_by_xpath('//*[@id="wc-container-right"]/div/div[3]/div[2]/textarea')
+text_area.send_keys("Binod")
 text_area.send_keys(Keys.CONTROL+"a")
 text_area.send_keys(Keys.CONTROL+"x")
 i=100
 for i in range(i):
     text_area.send_keys(Keys.CONTROL+"v")
+    text_area.send_keys((i+1))
     text_area.send_keys(Keys.ENTER)
 print("Done")
+
+text_area.send_keys("Number of messages sent: ",(i+2))
+text_area.send_keys(Keys.ENTER)
+
+
+# %%
