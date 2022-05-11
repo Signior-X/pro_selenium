@@ -46,7 +46,7 @@ while(True):
     search_box.send_keys(target + Keys.ENTER)
     print(search_box)
 
-    message_input = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+    message_input = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[2]')
 
     msg = input("Enter the message to be sent: ")
     # msg = "test"
@@ -103,9 +103,13 @@ print("Done")
 # Happy Birthday Naresh
 
 #%% Pattern message
-while(True):
 
-    target = input("Enter the target (Empty for stop) : ")
+targets = ["pranshu", "sarthak", "parshva"]
+
+
+for target in targets:
+
+    # target = input("Enter the target (Empty for stop) : ")
     # target = "Rashmi"
     # input("Press Enter")
     if(target == ''):
@@ -117,22 +121,26 @@ while(True):
     search_box.send_keys(target + Keys.ENTER)
     print(search_box)
 
-    message_input = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+    # just add a wait to find the contact
+    time.sleep(3)
 
-      # msg = input("Enter the message to be sent: ")
-      # msg = "test"
 
-    wishMsg = input("Enter the message: ")
-    if(wishMsg == ''):
-        continue
-    print(wishMsg)
-    
-    i=1
-    while(i<=len(wishMsg)):
-        message_input.send_keys(wishMsg[:i])
-        message_input.send_keys(Keys.ENTER)
-        i+=1
+    message_input = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[2]')
+
+    #   msg = input("Enter the message to be sent: ")
+    msg = "test"
+
+    # wishMsg = input("Enter the message: ")
+    # if(wishMsg == ''):
+    #     continue
+    # print(wishMsg)
+
+    message_input.send_keys(msg)
+    message_input.send_keys(Keys.ENTER)
     print("Messages sent!")
+
+    time.sleep(0.2)
+
 
 print("Done")
 # Happy Birthday Naresh
