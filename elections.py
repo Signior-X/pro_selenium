@@ -6,6 +6,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+import pandas as pd
+
 # import pyttsx3
 
 # %%
@@ -32,15 +34,20 @@ input("Press Enter after scanning: ")
 
 #%% Reading the data here
 
+dataFile1 = "Btech21.csv"
+df = pd.read_csv(dataFile1)
+df
 
 #%% Final message for running
-
-targets = ["pranshu", "pranshu", "hiya", "yuvi"]
 
 # What if the target is not found??
 
 lastOne = ""
-for target in targets:
+for index, row in df.iterrows():
+
+    target = row['Name']
+    thisName = row['First2']
+
     if(target == ''):
         break
     print("Target set", target)
@@ -60,9 +67,25 @@ for target in targets:
 
     lastOne = currentOne
     message_input = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[2]')
-    msg = "test"
+    msgs = ["""Hi """ + thisName + """,""",
+    Keys.SHIFT + Keys.ENTER,
+    """I am Hiya Jain, a second-year undergraduate student at IIT Mandi, contesting for the post of General Secretary.""",
+    Keys.SHIFT + Keys.ENTER,
+    Keys.SHIFT + Keys.ENTER,
+    """In the two years I have spent in this college, I have judiciously utilized all available resources irrespective of the mode. I have held managerial positions in all three societies- Cultural, Literary and Technical as the Volunteer of PMC, Writing Club and E-Cell. Working in Ruvaan as the Sponsorship Head and event co-coordinator in addition to club positions and being the Cultural Secretary of Gauri Kund has enabled me to experience the administrative bottleneck.""",
+    Keys.ENTER,
+    """In my strong opinion, the need of the hour is a powerful voice, one that can put forth and fight for students' rights, and I truly believe I can be that voice. The ones who witnessed the open house know how successfully I tackled the questions and are also well aware of how exposure and the will to work, as well as the best use of opportunities available at hand indicates having a greater amount of experience.""",
+    Keys.SHIFT + Keys.ENTER,
+    Keys.SHIFT + Keys.ENTER,
+    """Your vote matters a lot, cast it wisely. Above all, please do vote, that is the most important part.""",
+    Keys.SHIFT + Keys.ENTER,
+    Keys.SHIFT + Keys.ENTER,
+    """Yours sincerely, Hiya Jain."""
+    ]
 
-    message_input.send_keys(msg)
+    for msg in msgs:
+       message_input.send_keys(msg)
+ 
     message_input.send_keys(Keys.ENTER)
 
     message_input.send_keys(Keys.CONTROL + "v")
