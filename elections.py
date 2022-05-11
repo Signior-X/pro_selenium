@@ -35,8 +35,11 @@ input("Press Enter after scanning: ")
 
 #%% Final message for running
 
-targets = ["pranshu", "hiya", "yuvi"]
+targets = ["pranshu", "pranshu", "hiya", "yuvi"]
 
+# What if the target is not found??
+
+lastOne = ""
 for target in targets:
     if(target == ''):
         break
@@ -50,7 +53,12 @@ for target in targets:
     # just add a wait to find the contact
     time.sleep(3)
 
+    currentOne = driver.find_element_by_xpath('//*[@id="main"]/header/div[2]/div/div/span').text
+    if (lastOne != "" and lastOne == currentOne):
+        print("Not found, skipping")
+        continue
 
+    lastOne = currentOne
     message_input = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[2]')
     msg = "test"
 
