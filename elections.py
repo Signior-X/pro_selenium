@@ -45,7 +45,7 @@ df
 lastOne = ""
 for index, row in df.iterrows():
 
-    target = row['Name']
+    target = str(row['Mobile Phone'])
     thisName = row['First2']
 
     if(target == ''):
@@ -54,6 +54,7 @@ for index, row in df.iterrows():
 
     # For the searching ans automatically selecting the first one
     search_box = driver.find_element_by_xpath('//*[@id="side"]/div[1]/div/label/div/div[2]')
+    search_box.send_keys(Keys.CONTROL + "a")
     search_box.send_keys(target + Keys.ENTER)
     print(search_box)
 
@@ -69,18 +70,17 @@ for index, row in df.iterrows():
     message_input = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[2]')
     msgs = ["""Hi """ + thisName + """,""",
     Keys.SHIFT + Keys.ENTER,
-    """I am Hiya Jain, a second-year undergraduate student at IIT Mandi, contesting for the post of General Secretary.""",
+    """I am Aachman Gandhi, an undergraduate student from the 2020 batch. I am contesting for the post of Cultural Secretary in the upcoming gymkhana elections. I am the lead volunteer for the Dramatics Society (2021-2022). I am also a core member of the Photography and Moviemaking Club(2021-2022). I am also an active member of the Debating Society. I was the Publicity Head of Ruvaan, the intercollege literary fest of our college.""",
     Keys.SHIFT + Keys.ENTER,
     Keys.SHIFT + Keys.ENTER,
-    """In the two years I have spent in this college, I have judiciously utilized all available resources irrespective of the mode. I have held managerial positions in all three societies- Cultural, Literary and Technical as the Volunteer of PMC, Writing Club and E-Cell. Working in Ruvaan as the Sponsorship Head and event co-coordinator in addition to club positions and being the Cultural Secretary of Gauri Kund has enabled me to experience the administrative bottleneck.""",
+    """If elected, I wish to execute my vision of a more rich, inclusive, diverse and flourishing culture in our college.""",
     Keys.ENTER,
-    """In my strong opinion, the need of the hour is a powerful voice, one that can put forth and fight for students' rights, and I truly believe I can be that voice. The ones who witnessed the open house know how successfully I tackled the questions and are also well aware of how exposure and the will to work, as well as the best use of opportunities available at hand indicates having a greater amount of experience.""",
+    """I request you to go through my manifesto and if you have any views or any point of my manifesto that you want to discuss with me then fell free to share you thoughts with me.""",
     Keys.SHIFT + Keys.ENTER,
     Keys.SHIFT + Keys.ENTER,
     """Your vote matters a lot, cast it wisely. Above all, please do vote, that is the most important part.""",
     Keys.SHIFT + Keys.ENTER,
-    Keys.SHIFT + Keys.ENTER,
-    """Yours sincerely, Hiya Jain."""
+    """Contact No.- 9915239089"""
     ]
 
     for msg in msgs:
@@ -89,11 +89,11 @@ for index, row in df.iterrows():
     message_input.send_keys(Keys.ENTER)
 
     message_input.send_keys(Keys.CONTROL + "v")
-    time.sleep(0.5)
+    time.sleep(5)
 
     image_input = driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/div/div[1]/div[3]/div/div/div[2]/div[1]')
     image_input.send_keys(Keys.ENTER)
-    time.sleep(0.2)
+    time.sleep(5)
 
     print("Messages sent!")
 
@@ -103,3 +103,5 @@ print("Done")
 
 # %% Quit
 driver.quit()
+
+# %%
