@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 import pandas as pd
+from selenium.webdriver.common.by import By
 
 # import pyttsx3
 
@@ -16,10 +17,12 @@ import pandas as pd
 
 import os
 print(os.getcwd())
-pathOfDriver = os.getcwd() + '/chromedriver'
+pathOfDriver = os.getcwd() + '/chromedriver.exe'
 print(pathOfDriver)
 
-driver = webdriver.Chrome(pathOfDriver)
+#%%
+
+driver = webdriver.Chrome()
 
 driver.get("https://web.whatsapp.com/")
 wait = WebDriverWait(driver, 600)
@@ -45,28 +48,31 @@ df
 lastOne = ""
 for index, row in df.iterrows():
 
-    target = row['Name']
-    thisName = row['First2']
+    # target = row['Name']
+    # thisName = row['First2']
+    target = "Simo"
+    thisName = "Smriti"
 
     if(target == ''):
         break
     print("Target set", target)
 
     # For the searching ans automatically selecting the first one
-    search_box = driver.find_element_by_xpath('//*[@id="side"]/div[1]/div/label/div/div[2]')
+    search_box = driver.find_element(By.XPATH, '//*[@id="side"]/div[1]/div/div/div[2]/div/div[1]')
+    search_box.send_keys(Keys.CONTROL + "a")
     search_box.send_keys(target + Keys.ENTER)
     print(search_box)
 
     # just add a wait to find the contact
     time.sleep(3)
 
-    currentOne = driver.find_element_by_xpath('//*[@id="main"]/header/div[2]/div/div/span').text
+    currentOne = driver.find_element(By.XPATH, '//*[@id="main"]/header/div[2]/div/div/span').text
     if (lastOne != "" and lastOne == currentOne):
         print("Not found, skipping")
         continue
 
     lastOne = currentOne
-    message_input = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[2]')
+    message_input = driver.find_element(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]')
     msgs = ["""Hi """ + thisName + """,""",
     Keys.SHIFT + Keys.ENTER,
     """I am Hiya Jain, a second-year undergraduate student at IIT Mandi, contesting for the post of General Secretary.""",
@@ -91,15 +97,13 @@ for index, row in df.iterrows():
     message_input.send_keys(Keys.CONTROL + "v")
     time.sleep(0.5)
 
-    image_input = driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/div/div[1]/div[3]/div/div/div[2]/div[1]')
+    image_input = driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div[3]/div[2]/span/div/span/div/div/div[2]/div/div[1]/div[3]/div/div/div[2]/div[1]/div[1]')
     image_input.send_keys(Keys.ENTER)
     time.sleep(0.2)
 
     print("Messages sent!")
 
-
 print("Done")
-# Happy Birthday Naresh
 
 # %% Quit
 driver.quit()

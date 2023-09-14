@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 # import pyttsx3
+from selenium.webdriver.common.by import By
 
 # %%
 # Replace below path with the absolute path
